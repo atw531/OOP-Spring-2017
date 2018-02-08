@@ -19,6 +19,11 @@ public:
 
     }
 
+    // Destructor
+    ~String() {
+        delete[] mString;
+    }
+
 private:
     char* mString;
     int strLength;
