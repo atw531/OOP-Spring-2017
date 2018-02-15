@@ -19,3 +19,19 @@ bool BitCard::operator!=(BitCard bc) {
 bool BitCard::operator==(BitCard bc) {
     return cardBits == bc.cardBits;
 }
+
+bool BitCard::operator<(BitCard bc) {
+    return getRank() < bc.getRank();
+}
+
+bool BitCard::operator>(BitCard bc) {
+    return getRank() > bc.getRank();
+}
+
+bool BitCard::operator<=(BitCard bc) {
+    return getRank() < bc.getRank() || getRank() == bc.getRank();
+}
+
+bool BitCard::operator>=(BitCard bc) {
+    return getRank() > bc.getRank() || getRank() == bc.getRank();
+}

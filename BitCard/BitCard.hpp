@@ -47,9 +47,15 @@ public:
     // Get the card's Suit
     Suit getSuit() const;
 
-    // Operator Overloads
+    // Equality Operator Overloads
     bool operator!=(BitCard bc);
     bool operator==(BitCard bc);
+
+    // Comparison Operator Overloads
+    bool operator<(BitCard bc);
+    bool operator>(BitCard bc);
+    bool operator<=(BitCard bc);
+    bool operator>=(BitCard bc);
 
 private:
 
