@@ -38,6 +38,15 @@ public:
 
     }
 
+    // Copy Constructor
+    BitCard& operator=(BitCard bc);
+
+    // Get the card's Rank
+    Rank getRank() const;
+
+    // Get the card's Suit
+    Suit getSuit() const;
+
 private:
 
     unsigned char cardBits;
