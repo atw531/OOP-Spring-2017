@@ -22,6 +22,10 @@ int main() {
 	assert(n3 > n1);
 	assert(n1 != n9);
 	assert(n3 != n7);
+	assert(n2 <= n3);
+	assert(n2 >= n3);
+	assert(n6 <= n7);
+	assert(n7 >= n6);
 
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);

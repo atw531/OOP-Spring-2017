@@ -36,6 +36,26 @@ bool RationalNumber::operator==(RationalNumber b) {
 
 }
 
+bool RationalNumber::operator<=(RationalNumber b) {
+
+	if (*this == b) {
+		return true;
+	}
+
+	return *this < b;
+
+}
+
+bool RationalNumber::operator>=(RationalNumber b) {
+
+	if (*this == b) {
+		return true;
+	}
+
+	return *this > b;
+
+}
+
 bool RationalNumber::operator!=(RationalNumber b) {
 
 	return !(*this == b);

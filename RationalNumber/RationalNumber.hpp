@@ -45,6 +45,8 @@ public:
 	bool operator>(RationalNumber b);
 	bool operator==(RationalNumber b);
 	bool operator!=(RationalNumber b);
+	bool operator<=(RationalNumber b);
+	bool operator>=(RationalNumber b);
 
 private:
 	bool isNegative;
