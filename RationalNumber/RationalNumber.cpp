@@ -61,3 +61,15 @@ bool RationalNumber::operator!=(RationalNumber b) {
 	return !(*this == b);
 
 }
+
+RationalNumber RationalNumber::operator*(RationalNumber b) {
+
+	return RationalNumber(this->num * b.num, this->den * b.den);
+
+}
+
+RationalNumber RationalNumber::operator/(RationalNumber b) {
+
+	return RationalNumber(this->num * b.den, this->den * b.num);
+
+}

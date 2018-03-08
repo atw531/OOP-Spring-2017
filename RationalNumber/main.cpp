@@ -27,6 +27,17 @@ int main() {
 	assert(n6 <= n7);
 	assert(n7 >= n6);
 
+	RationalNumber n10 = RationalNumber(3, 8);
+	assert(n2*n5 == n2);
+	assert(n4*n2 == n10);
+	assert(n2*n4 == n10);
+
+	RationalNumber n11 = RationalNumber(3, 1);
+	assert(n7/n2 == n11);
+
+	RationalNumber n12 = RationalNumber(1, 1);
+	assert(n4/n4 == n12);
+
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);
 	} catch (std::invalid_argument ex) {

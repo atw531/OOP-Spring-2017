@@ -6,10 +6,6 @@
 class RationalNumber {
 
 public:
-
-	int num;
-	int den;
-
 	RationalNumber(int numerator, int denominator)
 		: num(numerator), den(denominator) {
 
@@ -41,6 +37,7 @@ public:
 
 	}
 
+	// Equality operators
 	bool operator<(RationalNumber b);
 	bool operator>(RationalNumber b);
 	bool operator==(RationalNumber b);
@@ -48,7 +45,13 @@ public:
 	bool operator<=(RationalNumber b);
 	bool operator>=(RationalNumber b);
 
+	// Arithmetic operators
+	RationalNumber operator*(RationalNumber b);
+	RationalNumber operator/(RationalNumber b);
+
 private:
+	int num;
+	int den;
 	bool isNegative;
 
 };
