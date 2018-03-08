@@ -38,6 +38,11 @@ int main() {
 	RationalNumber n12 = RationalNumber(1, 1);
 	assert(n4/n4 == n12);
 
+	assert(n1 + n4 == n5);
+	assert(n1 + n2 == n4);
+	assert(n4 - n2 == n1);
+	assert(n5 - n1 == n4);
+
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);
 	} catch (std::invalid_argument ex) {

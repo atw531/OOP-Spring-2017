@@ -6,6 +6,9 @@
 class RationalNumber {
 
 public:
+	int num;
+	int den;
+
 	RationalNumber(int numerator, int denominator)
 		: num(numerator), den(denominator) {
 
@@ -48,10 +51,35 @@ public:
 	// Arithmetic operators
 	RationalNumber operator*(RationalNumber b);
 	RationalNumber operator/(RationalNumber b);
+	RationalNumber operator-(RationalNumber b);
+	RationalNumber operator+(RationalNumber b);
 
 private:
-	int num;
-	int den;
 	bool isNegative;
 
 };
+
+/*
+RationalNumber operator-(RationalNumber a, RationalNumber b) {
+
+	int lcm = lcm(a.den, b.den);
+
+	return RationalNumber((a.num * lcm) - (b.num * lcm), lcm);
+
+};
+
+RationalNumber operator+(RationalNumber a, RationalNumber b) {
+
+	int lcm = lcm(a.den, b.den);
+
+	return RationalNumber((a.num * lcm) - (b.num * lcm), lcm)
+
+};
+
+int lcm(int a, int b) {
+
+	int gcd = std::__gcd(a, b);
+	int lcm = gcd ? (a / gcd * b) : 0;
+
+};
+*/

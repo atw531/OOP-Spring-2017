@@ -1,5 +1,6 @@
 #include "RationalNumber.hpp"
 #include <iostream>
+#include <algorithm>
 
 bool RationalNumber::operator<(RationalNumber b) {
 
@@ -32,8 +33,7 @@ bool RationalNumber::operator>(RationalNumber b) {
 bool RationalNumber::operator==(RationalNumber b) {
 
 	return this->isNegative == b.isNegative && this->num == b.num && this->den == b.den;
-	//return (this->num / this->den) == (b.num / b.den);
-
+	
 }
 
 bool RationalNumber::operator<=(RationalNumber b) {
@@ -71,5 +71,23 @@ RationalNumber RationalNumber::operator*(RationalNumber b) {
 RationalNumber RationalNumber::operator/(RationalNumber b) {
 
 	return RationalNumber(this->num * b.den, this->den * b.num);
+
+}
+
+RationalNumber RationalNumber::operator-(RationalNumber b) {
+
+	int gcd = std::__gcd(this->den, b.den);
+	int lcm = gcd ? (this->den / gcd * b.den) : 0;
+
+	return RationalNumber((this->num * (lcm / this->den)) - (b.num * (lcm / b.den)), lcm);
+
+}
+
+RationalNumber RationalNumber::operator+(RationalNumber b) {
+
+	int gcd = std::__gcd(this->den, b.den);
+	int lcm = gcd ? (this->den / gcd * b.den) : 0;
+
+	return RationalNumber((this->num * (lcm / this->den)) + (b.num * (lcm / b.den)), lcm);
 
 }
