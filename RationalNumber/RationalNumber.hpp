@@ -10,6 +10,10 @@ public:
 	int num;
 	int den;
 
+	RationalNumber() {
+
+	}
+
 	RationalNumber(int numerator, int denominator)
 		: num(numerator), den(denominator) {
 
@@ -41,22 +45,29 @@ public:
 
 	}
 
+	// Copy constructor
+	RationalNumber& operator=(const RationalNumber& b) {
+		this->num = b.num;
+		this->den = b.den;
+	}
+
 	// Equality operators
-	bool operator<(RationalNumber b);
-	bool operator>(RationalNumber b);
-	bool operator==(RationalNumber b);
-	bool operator!=(RationalNumber b);
-	bool operator<=(RationalNumber b);
-	bool operator>=(RationalNumber b);
+	bool operator<(const RationalNumber& b);
+	bool operator>(const RationalNumber& b);
+	bool operator==(const RationalNumber& b);
+	bool operator!=(const RationalNumber& b);
+	bool operator<=(const RationalNumber& b);
+	bool operator>=(const RationalNumber& b);
 
 	// Arithmetic operators
-	RationalNumber operator*(RationalNumber b);
-	RationalNumber operator/(RationalNumber b);
-	RationalNumber operator-(RationalNumber b);
-	RationalNumber operator+(RationalNumber b);
+	RationalNumber operator*(const RationalNumber& b);
+	RationalNumber operator/(const RationalNumber& b);
+	RationalNumber operator-(const RationalNumber& b);
+	RationalNumber operator+(const RationalNumber& b);
 
 	// Input/Output
-	friend std::ostream &operator<<(std::ostream&, const RationalNumber&);
+	friend std::ostream &operator<<(std::ostream& stream, const RationalNumber& numb);
+	friend std::istream &operator>>(std::istream& stream, RationalNumber& numb);
 
 private:
 	bool isNegative;

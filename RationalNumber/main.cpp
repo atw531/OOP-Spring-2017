@@ -49,6 +49,12 @@ int main() {
 	std::cout << n4 << "\n";
 	std::cout << n5 << "\n";
 
+	RationalNumber n13;
+	std::cout << "Input a rational number (numerator/denominator): ";
+	std::cin >> n13;
+	std::cout << "Input = " << n13 << "\n";
+
+	std::cout << "\nTest invalid denominator...\n";
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);
 	} catch (std::invalid_argument ex) {
