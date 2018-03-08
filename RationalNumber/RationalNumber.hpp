@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 
 class RationalNumber {
 
@@ -53,6 +54,9 @@ public:
 	RationalNumber operator/(RationalNumber b);
 	RationalNumber operator-(RationalNumber b);
 	RationalNumber operator+(RationalNumber b);
+
+	// Input/Output
+	friend std::ostream &operator<<(std::ostream&, const RationalNumber&);
 
 private:
 	bool isNegative;

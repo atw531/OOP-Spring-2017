@@ -43,6 +43,12 @@ int main() {
 	assert(n4 - n2 == n1);
 	assert(n5 - n1 == n4);
 
+	std::cout << "Output Test:\n";
+	std::cout << n1 << "\n";
+	std::cout << n2 << "\n";
+	std::cout << n4 << "\n";
+	std::cout << n5 << "\n";
+
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);
 	} catch (std::invalid_argument ex) {

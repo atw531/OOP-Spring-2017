@@ -1,6 +1,4 @@
 #include "RationalNumber.hpp"
-#include <iostream>
-#include <algorithm>
 
 bool RationalNumber::operator<(RationalNumber b) {
 
@@ -33,7 +31,7 @@ bool RationalNumber::operator>(RationalNumber b) {
 bool RationalNumber::operator==(RationalNumber b) {
 
 	return this->isNegative == b.isNegative && this->num == b.num && this->den == b.den;
-	
+
 }
 
 bool RationalNumber::operator<=(RationalNumber b) {
@@ -89,5 +87,11 @@ RationalNumber RationalNumber::operator+(RationalNumber b) {
 	int lcm = gcd ? (this->den / gcd * b.den) : 0;
 
 	return RationalNumber((this->num * (lcm / this->den)) + (b.num * (lcm / b.den)), lcm);
+
+}
+
+std::ostream &operator<<(std::ostream& stream, const RationalNumber& numb) {
+
+	return stream << numb.num << "/" << numb.den;
 
 }
