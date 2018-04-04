@@ -54,6 +54,9 @@ int main() {
 	std::cin >> n13;
 	std::cout << "Input = " << n13 << "\n";
 
+	RationalNumber n14 = n1;
+	assert(n14 == n1);
+
 	std::cout << "\nTest invalid denominator...\n";
 	try {
 		RationalNumber invalid = RationalNumber(1, 0);

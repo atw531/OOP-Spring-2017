@@ -49,6 +49,8 @@ public:
 	RationalNumber& operator=(const RationalNumber& b) {
 		this->num = b.num;
 		this->den = b.den;
+
+		return *this;
 	}
 
 	// Equality operators
