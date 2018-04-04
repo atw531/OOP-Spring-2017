@@ -1,6 +1,9 @@
 #include "BitCard.hpp"
 #include <iostream>
 
+#include <cstring>
+#include <cstdlib>
+
 int main() {
 
     BitCard* card = new BitCard(King, Spades);
