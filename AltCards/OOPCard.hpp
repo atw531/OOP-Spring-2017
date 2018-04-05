@@ -1,9 +1,10 @@
+#pragma once
 
 class OOPCard {
 
 public:
 	OOPCard() {
-		
+
 	}
 
 private:
