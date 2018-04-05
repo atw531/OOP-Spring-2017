@@ -2,7 +2,9 @@
 class BitCard {
 
 public:
-	BitCard() {}
+	BitCard() {
+		
+	}
 
 private:
 
