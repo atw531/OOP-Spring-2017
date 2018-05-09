@@ -64,5 +64,4 @@ private:
                                           "Molinetto", "Fontanile", "Romanga", "Monterana"};
 };
 
-
 #endif //SANTA_PARAVIA_GAME_HPP
