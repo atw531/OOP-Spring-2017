@@ -34,7 +34,13 @@ public:
     void takeTurn();
 
     Gender getGender() { return mGender; }
+    std::string getName() { return mName; }
     int getTitleIndex() { return mTitleIndex; }
+    int getLandSize() { return mCity->getLandsize(); }
+    void setLandSize(int total) { mCity->setLand(total); }
+    int getSoldierCount() { return mCity->getSoldierCount(); }
+    void killSoldiers(int amount) { mCity->killSoldiers(amount); }
+
     bool determineNewTitle(int difficultyLevel);
 
 private:

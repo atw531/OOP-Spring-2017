@@ -59,6 +59,14 @@ void City::buySoldiers() {
     mTotalTreasury -= 500;
 }
 
+void City::setLand(int total) {
+    mLandSize = total;
+}
+
+void City::killSoldiers(int casualties) {
+    mSoldierCount -= casualties;
+}
+
 void City::generateHarvest() {
     RandomGenerator random;
     mHarvest = (random.withinRange(1, 5) + random.withinRange(1, 6)) / 2;
@@ -104,4 +112,15 @@ void City::calculateRevenue(int playerLevel) {
     std::cout << "Customs Duty: " << mCustomsTaxRevenue << "\n";
     std::cout << "Justice: " << mJusticeRevenue << "\n";
 
+}
+
+void City::addRevenue() {
+    mTotalTreasury += mJusticeRevenue + mCustomsTaxRevenue + mIncomeTaxRevenue + mSalesTaxRevenue;
+
+    if (mTotalTreasury < 0) {
+        mTotalTreasury = (int)((double)mTotalTreasury * 1.5);
+    }
+
+    // todo: check bankrupt
+    // if (totalTreasury < (-1000 * playerLevel) { bankrupt}
 }

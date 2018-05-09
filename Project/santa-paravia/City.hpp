@@ -28,11 +28,15 @@ public:
     void buyPalace();
     void buySoldiers();
 
+    void setLand(int total);
+    void killSoldiers(int casualties);
+
     void generateHarvest();
 
     void addToTreasury(int amount);
     void deductFromTreasury(int amount);
     void calculateRevenue(int playerLevel);
+    void addRevenue();
 
     int getLandsize() { return mLandSize; }
     int getCathedralCount() { return mCathedral; }

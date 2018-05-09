@@ -47,6 +47,8 @@ public:
 
     void play();
 
+    void fight(Player* p1, Player* p2);
+
 private:
     int mYear;
     bool isWon;
