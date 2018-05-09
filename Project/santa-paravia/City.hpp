@@ -41,10 +41,15 @@ public:
 
     // Grain Methods
     void generateHarvest();
+    std::string getGrainStatus();
+    void releaseGrain(int amount);
+    void releaseMinGrain();
+    void releaseMaxGrain();
 
     // Treasury Methods
     void calculateRevenue(int playerLevel);
     void addRevenue();
+    void newLandAndGrainPrices();
 
 protected:
     std::string mCityName;
@@ -54,8 +59,9 @@ protected:
 
     Building mCathedral, mPalace;
 
-    Citizen mClergy, mSerfs, mNobles, mMerchants;
+    Citizen mClergy, mNobles, mMerchants;
     Soldier mSoldiers;
+    Serf mSerfs;
 
     Resource mMarketPlaces, mMills;
 
