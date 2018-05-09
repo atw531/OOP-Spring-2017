@@ -254,6 +254,7 @@ int AttackNeighbor(player *Me, player *Him)
 	return(LandTaken);
 }
 
+// DONE
 void BuyCathedral(player *Me)
 {
 	Me->Cathedral += 1;
@@ -263,6 +264,7 @@ void BuyCathedral(player *Me)
 	return;
 }
 
+// DONE
 void BuyGrain(player *Me)
 {
 	char string[256];
@@ -287,6 +289,7 @@ void BuyGrain(player *Me)
 	return;
 }
 
+// DONE
 void BuyLand(player *Me)
 {
 	char string[256];
@@ -299,6 +302,7 @@ void BuyLand(player *Me)
 	return;
 }
 
+// DONE
 void BuyMarket(player *Me)
 {
 	Me->Marketplaces += 1;
@@ -308,6 +312,7 @@ void BuyMarket(player *Me)
 	return;
 }
 
+// DONE
 void BuyMill(player *Me)
 {
 	Me->Mills += 1;
@@ -316,6 +321,7 @@ void BuyMill(player *Me)
 	return;
 }
 
+// DONE
 void BuyPalace(player *Me)
 {
 	Me->Palace += 1;
@@ -325,6 +331,7 @@ void BuyPalace(player *Me)
 	return;
 }
 
+// DONE
 void BuySoldiers(player *Me)
 {
 	Me->Soldiers += 20;

@@ -14,16 +14,25 @@ public:
               mSoldierCount(25), mSoldierPay(1),
               mGrainReserve(5000), mGrainPrice(25), mGrainDemand(1), mRatCount(1), mHarvest(0),
               mJusticeLevel(2), mMarketPlaceCount(0), mMillCount(0),
-              mPublicWorks(1.0), mLandPrice(10.0) {
-
-        // Initialize the treasury
-        mTreasury = new Treasury();
+              mPublicWorks(1.0), mLandPrice(10.0),
+              mTotalTreasury(1000), mCustomsTax(25), mSalesTax(10), mIncomeTax(5) {
 
     }
 
+    void buyCathedral();
+    void setGrain(int totalDesired);
+    void buyGrain(int amount);
+    void buyLand(int amount);
+    void buyMarket();
+    void buyMill();
+    void buyPalace();
+    void buySoldiers();
+
     void generateHarvest();
 
+    void addToTreasury(int amount);
     void deductFromTreasury(int amount);
+    void calculateRevenue(int playerLevel);
 
     int getLandsize() { return mLandSize; }
     int getCathedralCount() { return mCathedral; }
@@ -36,7 +45,7 @@ public:
     int getSoldierCount() { return mSoldierCount; }
     int getSerfCount() { return mSerfCount; }
     int getJusticeLevel() { return mJusticeLevel; }
-    int getTreasuryTotal() { return mTreasury->getTotal(); }
+    int getTreasuryTotal() { return mTotalTreasury; }
     double getPublicWorks() { return mPublicWorks; }
 
 private:
@@ -58,7 +67,20 @@ private:
 
     double mPublicWorks, mLandPrice;
 
-    Treasury* mTreasury;
+    int mTotalTreasury;
+
+    int mCustomsTax;
+    int mCustomsTaxRevenue;
+
+    int mJusticeRevenue;
+    int mMarketRevenue;
+    int mMillRevenue;
+
+    int mSalesTax;
+    int mSalesTaxRevenue;
+
+    int mIncomeTax;
+    int mIncomeTaxRevenue;
 
 };
 
