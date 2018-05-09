@@ -231,6 +231,7 @@ void AddRevenue(player *Me)
 	return;
 }
 
+// DONE
 int AttackNeighbor(player *Me, player *Him)
 {
 	int LandTaken;

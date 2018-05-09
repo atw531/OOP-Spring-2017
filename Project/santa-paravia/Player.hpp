@@ -11,48 +11,36 @@ enum Gender {
     Female
 };
 
-enum Action {
-
-};
-
-class Player {
+class Player : public City {
 public:
     Player(std::string name, Gender gender, const std::string& cityName)
-            : mName(std::move(name)), mGender(gender),
-              mTitleIndex(0), mLevel(1),
-              isWinner(false), isDead(false) {
+            : mName(std::move(name)), mGender(gender), mTitleIndex(0),
+              isWinner(false), isDead(false),
+              City(cityName){
 
         // Get the year of death
         RandomGenerator randomGenerator;
         int lifeSpan = randomGenerator.withinRange(1, 35);
         mDeathYear = 1400 + 20 + lifeSpan;
-
-        // Initialize the city
-        mCity = new City(cityName);
     }
-
-    void takeTurn();
 
     Gender getGender() { return mGender; }
     std::string getName() { return mName; }
     int getTitleIndex() { return mTitleIndex; }
-    int getLandSize() { return mCity->getLandsize(); }
-    void setLandSize(int total) { mCity->setLand(total); }
-    int getSoldierCount() { return mCity->getSoldierCount(); }
-    void killSoldiers(int amount) { mCity->killSoldiers(amount); }
 
+    void takeTurn();
+    int playerLevel() { return mTitleIndex + 1; }
     bool determineNewTitle(int difficultyLevel);
+    bool checkIsDead(int currentYear);
+    bool checkIsBankrupt();
 
 private:
     std::string mName;
     Gender mGender;
 
-    City* mCity;
-
     int mDeathYear;
 
     int mTitleIndex;
-    int mLevel;
 
     bool isWinner;
     bool isDead;

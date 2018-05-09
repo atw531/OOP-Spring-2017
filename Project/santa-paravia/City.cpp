@@ -1,121 +1,113 @@
 #include "City.hpp"
 
 void City::buyCathedral() {
-    mCathedral += 1;
+    mCathedral.Count += 1;
     RandomGenerator generator;
-    mClergyCount += generator.withinRange(1, 6);
+    mClergy.Count += generator.withinRange(1, 6);
     mTotalTreasury -= 5000;
     mPublicWorks += 1.0;
 }
 
-void City::setGrain(int totalDesired) {
-    if (totalDesired >= 0) {
-        totalDesired -= mGrainReserve;
-        if (totalDesired >= 0) {
-            mTotalTreasury -= (totalDesired * mGrainPrice) / 1000;
-            mGrainReserve += totalDesired;
+void City::setGrain(int total) {
+    if (total >= 0) {
+        total -= mGrain.Count;
+        if (total >= 0) {
+            mTotalTreasury -= (total * mGrain.Cost) / 1000;
+            mGrain.Count += total;
         }
     }
 }
 
 void City::buyGrain(int amount) {
     if (amount >= 0) {
-        mTotalTreasury -= (amount * mGrainPrice) / 1000;
-        mGrainReserve += amount;
+        mTotalTreasury -= (amount * mGrain.Cost) / 1000;
+        mGrain.Count += amount;
     }
 }
 
 void City::buyLand(int amount) {
     if (amount > 0) {
-        mLandSize += amount;
-        mTotalTreasury -= (int)((double)amount * mLandPrice);
+        mLand.Count += amount;
+        mTotalTreasury -= (int)((double)amount * mLand.Cost);
     }
 }
 
 void City::buyMarket() {
-    mMarketPlaceCount += 1;
-    mMerchantCount += 5;
+    mMarketPlaces.Count += 1;
+    mMerchants.Count += 5;
     mTotalTreasury -= 1000;
     mPublicWorks += 1.0;
 }
 
 void City::buyMill() {
-    mMillCount += 1;
+    mMills.Count += 1;
     mTotalTreasury -= 2000;
     mPublicWorks += 0.25;
 }
 
 void City::buyPalace() {
-    mPalace += 1;
+    mPalace.Count += 1;
     RandomGenerator generator;
-    mNobleCount += generator.withinRange(0, 2);
+    mNobles.Count += generator.withinRange(0, 2);
     mTotalTreasury -= 3000;
     mPublicWorks += 0.5;
 }
 
 void City::buySoldiers() {
-    mSoldierCount += 20;
-    mSerfCount -= 20;
+    mSoldiers.Count += 20;
+    mSerfs.Count -= 20;
     mTotalTreasury -= 500;
 }
 
 void City::setLand(int total) {
-    mLandSize = total;
+    mLand.Count = total;
 }
 
 void City::killSoldiers(int casualties) {
-    mSoldierCount -= casualties;
+    mSoldiers.Count -= casualties;
 }
 
 void City::generateHarvest() {
     RandomGenerator random;
-    mHarvest = (random.withinRange(1, 5) + random.withinRange(1, 6)) / 2;
-    mRatCount = random.withinRange(1, 50);
-    mGrainReserve = ((mGrainReserve * 100) - (mGrainReserve * mRatCount)) / 100;
-}
-
-void City::addToTreasury(int amount) {
-    mTotalTreasury += amount;
-}
-
-void City::deductFromTreasury(int amount) {
-    mTotalTreasury -= amount;
+    mGrain.Harvest = (random.withinRange(1, 5) + random.withinRange(1, 6)) / 2;
+    mGrain.Rats = random.withinRange(1, 50);
+    mGrain.Count = ((mGrain.Count * 100) - (mGrain.Count * mGrain.Rats)) / 100;
 }
 
 void City::calculateRevenue(int playerLevel) {
 
-    double temp = 150 - mSalesTax - mCustomsTax - mIncomeTax;
+    double temp = 150 - mSalesTax.Percentage - mCustomsTax.Percentage - mIncomeTax.Percentage;
     if (temp < 1.0) {
         temp = 1.0;
     }
     temp /= 100.0;
 
-    mJusticeRevenue = (mJusticeLevel * 300 - 500) * playerLevel;
+    mJusticeRev.Revenue = (mJusticeLevel * 300 - 500) * playerLevel;
 
-    mCustomsTaxRevenue = mNobleCount * 180 + mClergyCount * 75 + mMerchantCount * 20 * (int)temp;
-    mCustomsTaxRevenue += (int)(mPublicWorks * 100.0);
-    mCustomsTaxRevenue = (int)((mCustomsTax / 100.0) * mCustomsTaxRevenue);
+    mCustomsTax.Revenue = mNobles.Count * 180 + mClergy.Count * 75 + mMerchants.Count * 20 * (int)temp;
+    mCustomsTax.Revenue += (int)(mPublicWorks * 100.0);
+    mCustomsTax.Revenue = (int)((mCustomsTax.Percentage / 100.0) * mCustomsTax.Revenue);
 
-    mSalesTaxRevenue = mNobleCount * 50 + mMerchantCount * 25 + (int)mPublicWorks * 10;
-    mSalesTaxRevenue *= (int)temp * (5 - mJusticeLevel) * mSalesTax;
-    mSalesTaxRevenue /= 200;
+    mSalesTax.Revenue = mNobles.Count * 50 + mMerchants.Count * 25 + (int)mPublicWorks * 10;
+    mSalesTax.Revenue *= (int)temp * (5 - mJusticeLevel) * mSalesTax.Percentage;
+    mSalesTax.Revenue /= 200;
 
-    mIncomeTaxRevenue = mNobleCount * 250 + (int)mPublicWorks * 20 + (10 * mJusticeLevel * mNobleCount * (int)temp);
-    mIncomeTaxRevenue *= mIncomeTax;
-    mIncomeTaxRevenue /= 100;
+    mIncomeTax.Revenue = mNobles.Count * 250 + (int)mPublicWorks * 20 + (10 * mJusticeLevel * mNobles.Count * (int)temp);
+    mIncomeTax.Revenue *= mIncomeTax.Percentage;
+    mIncomeTax.Revenue /= 100;
 
-    int totalRevs = mJusticeRevenue + mCustomsTaxRevenue + mSalesTaxRevenue + mIncomeTaxRevenue;
+    int totalRevs = mJusticeRev.Revenue + mCustomsTax.Revenue + mSalesTax.Revenue + mIncomeTax.Revenue;
 
     std::cout << "State revenues " << totalRevs << " gold florins\n";
-    std::cout << "Income Tax: " << mIncomeTaxRevenue << "\n";
-    std::cout << "Sales Tax: " << mSalesTaxRevenue << "\n";
-    std::cout << "Customs Duty: " << mCustomsTaxRevenue << "\n";
-    std::cout << "Justice: " << mJusticeRevenue << "\n";
+    std::cout << "Income Tax: " << mIncomeTax.Revenue << "\n";
+    std::cout << "Sales Tax: " << mSalesTax.Revenue << "\n";
+    std::cout << "Customs Duty: " << mCustomsTax.Revenue << "\n";
+    std::cout << "Justice: " << mJusticeRev.Revenue << "\n";
 
 }
 
 void City::addRevenue() {
-    mTotalTreasury += mJusticeRevenue + mCustomsTaxRevenue + mIncomeTaxRevenue + mSalesTaxRevenue;
+    mTotalTreasury += mJusticeRev.Revenue + mCustomsTax.Revenue + mIncomeTax.Revenue + mSalesTax.Revenue;
 
     if (mTotalTreasury < 0) {
         mTotalTreasury = (int)((double)mTotalTreasury * 1.5);

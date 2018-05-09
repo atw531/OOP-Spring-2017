@@ -31,8 +31,8 @@ void Game::fight(Player* attacker, Player* defender) {
         landTaken = (defender->getLandSize() - 5000) / 2;
     }
 
-    attacker->setLandSize(attacker->getLandSize() + landTaken);
-    defender->setLandSize(defender->getLandSize() - landTaken);
+    attacker->setLand(attacker->getLandSize() + landTaken);
+    defender->setLand(defender->getLandSize() - landTaken);
 
     std::string attackerTitle;
     if (attacker->getGender() == Male) {

@@ -3,9 +3,22 @@
 
 class RevenueStream {
 public:
+    RevenueStream()
+            : Revenue(0) {
 
-protected:
+    };
 
+    int Revenue;
+};
+
+class Tax : public RevenueStream {
+public:
+    Tax(int percentage)
+            : Percentage(percentage) {
+
+    }
+
+    int Percentage;
 };
 
 #endif //SANTA_PARAVIA_REVENUESTREAM_HPP
