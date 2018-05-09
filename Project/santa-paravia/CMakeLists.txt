@@ -3,5 +3,5 @@ project(santa_paravia)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES SantaParavia.cpp Player.cpp Player.hpp Game.cpp Game.hpp City.cpp City.hpp)
+set(SOURCE_FILES main.cpp Game.cpp Game.hpp Player.cpp Player.hpp City.cpp City.hpp Treasury.cpp Treasury.hpp RevenueStream.hpp RandomGenerator.cpp RandomGenerator.hpp)
 add_executable(santa_paravia ${SOURCE_FILES})

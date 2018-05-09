@@ -1,55 +1,57 @@
-#pragma once
+#ifndef SANTA_PARAVIA_PLAYER_HPP
+#define SANTA_PARAVIA_PLAYER_HPP
 
 #include <string>
+#include <cstdlib>
+#include "RandomGenerator.hpp"
 #include "City.hpp"
-
-
-enum MaleTitle {
-    Sir,
-    Baron,
-    Count,
-    Marquis,
-    Duke,
-    Grand_Duke,
-    Prince,
-    HRH_King
-};
-
-enum FemaleTitle {
-    Lady,
-    Baroness,
-    Countess,
-    Marquise,
-    Duchess,
-    Grand_Duchess,
-    Princess,
-    HRH_Queen
-};
 
 enum Gender {
     Male,
     Female
 };
 
+enum Action {
+
+};
+
 class Player {
-
 public:
-    Player(std::string name, Gender gender)
-        : mName(name), mGender(gender) {
+    Player(std::string name, Gender gender, const std::string& cityName)
+            : mName(std::move(name)), mGender(gender),
+              mTitleIndex(0), mLevel(1),
+              isWinner(false), isDead(false) {
 
-        if (mGender == Male) {
-            mMaleTitle  = Sir;
-        } else {
-            mFemaleTitle = Lady;
-        }
+        // Get the year of death
+        RandomGenerator randomGenerator;
+        int lifeSpan = randomGenerator.withinRange(1, 35);
+        mDeathYear = 1400 + 20 + lifeSpan;
 
+        // Initialize the city
+        mCity = new City(cityName);
     }
+
+    void takeTurn();
+
+    Gender getGender() { return mGender; }
+    int getTitleIndex() { return mTitleIndex; }
+    bool determineNewTitle(int difficultyLevel);
 
 private:
     std::string mName;
     Gender mGender;
-    MaleTitle mMaleTitle;
-    FemaleTitle mFemaleTitle;
 
-    City mCity;
+    City* mCity;
+
+    int mDeathYear;
+
+    int mTitleIndex;
+    int mLevel;
+
+    bool isWinner;
+    bool isDead;
+
 };
+
+
+#endif //SANTA_PARAVIA_PLAYER_HPP
