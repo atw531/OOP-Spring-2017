@@ -256,11 +256,11 @@ void City::releaseGrain(int amount) {
             xp = 0.0;
             x = 0.0;
         }
-        //todo: serfs procreating (3.0)
-        //todo: serfs decomposing (xp + 8.0)
+        serfsProcreating(3.0);
+        serfsDecomposing(xp + 8.0);
     } else {
-        //todo: serfs procreating (7.0)
-        //todo: serfs decomposing (3.0)
+        serfsProcreating(7.0);
+        serfsDecomposing(3.0);
         if (mCustomsTax.Percentage + mSalesTax.Percentage < 35) {
             mMerchants.Count = generator.withinRange(0, 4);
         }

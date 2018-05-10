@@ -26,6 +26,8 @@ public:
     // Getters
     int getSoldierCount() { return mSoldiers.Count; }
     int getLandSize() { return mLand.Count; }
+    double getLandPrice() { return mLand.Cost; }
+    int getTreasury() { return mTotalTreasury; }
 
     // Purchases and changes in quantity
     void buyCathedral();
@@ -43,6 +45,7 @@ public:
     void serfsDecomposing(double scale);
 
     // Grain Methods
+    Grain mGrain;
     void generateHarvest();
     std::string getGrainStatus();
     void releaseGrain(int amount);
@@ -58,7 +61,6 @@ public:
 protected:
     std::string mCityName;
 
-    Grain mGrain;
     Land mLand;
 
     Building mCathedral, mPalace;
