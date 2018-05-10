@@ -28,6 +28,8 @@ public:
     std::string getName() { return mName; }
     int getTitleIndex() { return mTitleIndex; }
 
+    void attack(Player* target);
+
     void takeTurn();
     int playerLevel() { return mTitleIndex + 1; }
     bool determineNewTitle(int difficultyLevel);

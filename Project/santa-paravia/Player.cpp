@@ -51,3 +51,22 @@ bool Player::determineNewTitle(int difficultyLevel) {
 void Player::takeTurn() {
 
 }
+
+void Player::attack(Player *target) {
+    RandomGenerator generator;
+
+    int landTaken = (mSoldiers.Count * 100) - (mLand.Count / 3);
+    if (landTaken > target->mLand.Count - 5000) {
+        landTaken = (target->mLand.Count - 5000) / 2;
+    }
+
+    mLand.Count += landTaken;
+    target->mLand.Count -= landTaken;
+
+    int casualties = generator.withinRange(0, 40);
+    if (casualties > target->mSoldiers.Count - 15) {
+        casualties = target->mSoldiers.Count - 15;
+    }
+    target->killSoldiers(casualties);
+
+}
