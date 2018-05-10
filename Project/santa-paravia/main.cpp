@@ -26,6 +26,7 @@ int main() {
     std::cin >> difficulty;
 
     Game* theGame = new Game(playerCount, difficulty);
+    theGame->play();
 
     return 0;
 }
