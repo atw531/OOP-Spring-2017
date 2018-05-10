@@ -67,6 +67,28 @@ void City::killSoldiers(int casualties) {
     mSoldiers.Count -= casualties;
 }
 
+void City::serfsProcreating(double scale) {
+    int absc;
+    double ord;
+    absc = (int)scale;
+    ord = scale - (double)absc;
+    RandomGenerator generator;
+    mSerfs.New = (int)((((double)generator.withinRange(0, absc) + ord) * (double)mSerfs.Count) / 100.0);
+    mSerfs.Count += mSerfs.New;
+    //todo: print mSerfs.New serfs born this year
+}
+
+void City::serfsDecomposing(double scale) {
+    int absc;
+    double ord;
+    absc = (int)scale;
+    ord = scale - (double)absc;
+    RandomGenerator generator;
+    mSerfs.Dead = (int)((((double)generator.withinRange(0, absc) + ord) * (double)mSerfs.Count) / 100.0);
+    mSerfs.Count -= mSerfs.Dead;
+    //todo: print mSerfs.Dead serfs died this year
+}
+
 void City::generateHarvest() {
     RandomGenerator random;
     mGrain.Harvest = (random.withinRange(1, 5) + random.withinRange(1, 6)) / 2;
@@ -309,4 +331,14 @@ void City::releaseMinGrain() {
 void City::releaseMaxGrain() {
     int amount = mGrain.Count - (mGrain.Count / 5);
     releaseGrain(amount);
+}
+
+void City::seizeAssets() {
+    mMarketPlaces.Count = 0;
+    mPalace.Count = 0;
+    mCathedral.Count = 0;
+    mMills.Count = 0;
+    mLand.Count = 6000;
+    mPublicWorks = 1.0;
+    mTotalTreasury = 100;
 }

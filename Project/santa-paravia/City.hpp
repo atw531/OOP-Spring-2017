@@ -39,6 +39,9 @@ public:
     void buySoldiers();
     void killSoldiers(int casualties);
 
+    void serfsProcreating(double scale);
+    void serfsDecomposing(double scale);
+
     // Grain Methods
     void generateHarvest();
     std::string getGrainStatus();
@@ -50,6 +53,7 @@ public:
     void calculateRevenue(int playerLevel);
     void addRevenue();
     void newLandAndGrainPrices();
+    void seizeAssets();
 
 protected:
     std::string mCityName;
