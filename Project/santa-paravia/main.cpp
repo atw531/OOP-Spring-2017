@@ -5,7 +5,7 @@ void printInstructions();
 
 int main() {
     std::cout << "Welcome to Santa Paravia and Fiumaccio\n";
-    std::cout << "Would you like to see the instructions? (Y or N)";
+    std::cout << "Would you like to see the instructions? (Y or N)\n";
     std::string input;
     std::cin >> input;
     if (std::tolower(input.front()) == 'y') {
@@ -21,7 +21,7 @@ int main() {
     }
 
     std::cout << "What will be the difficulty fo the game:\n";
-    std::cout << "1. Apprentice\n2. Journeyman\n3. Master\n4. Grand Master\n\nChoose: ";
+    std::cout << "1. Apprentice\n2. Journeyman\n3. Master\n4. Grand Master\n\nChoose:\n";
     int difficulty = 1;
     std::cin >> difficulty;
 
@@ -49,6 +49,7 @@ void printInstructions() {
     std::cout << "a high death rate. High taxes raise money, but slow down\n";
     std::cout << "economic growth. (Press ENTER to begin game)\n";
 
-    std::cin.get();
+    std::string trash;
+    std::cin >> trash;
 
 }

@@ -11,6 +11,12 @@ public:
     Game(int playerCount, int difficultyLevel)
             : mYear(1400), isWon(false) {
 
+        if (playerCount < 1) {
+            playerCount = 1;
+        } else if (playerCount > 6) {
+            playerCount = 6;
+        }
+
         if (difficultyLevel < 1) {
             mDifficultyLevel = 1;
         } else if (difficultyLevel > 4) {
@@ -27,7 +33,7 @@ public:
             std::cin >> playerName;
 
             // Get the gender and corresponding title
-            std::cout << "Is " << playerName << " a Male or Female? (M or F)";
+            std::cout << "Is " << playerName << " a Male or Female? (M or F)\n";
             std::string inputStr;
             Gender playerGender;
             std::cin >> inputStr;

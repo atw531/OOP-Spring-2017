@@ -11,16 +11,31 @@ Player
 	- Gender
 	- Title
 	- City
-	- Palace
 	- Is Dead (flag)
 	- Won (flag)
 
 Citizen
 	- Type (serf, soldier, noble)
+	- Total Count
+	- For Soldiers: Cost (price per soldier)
+	- For Serfs: Number of Dead, Fleeing, New, and Transplanted serfs
 	
+Resource
+	- Land and Grain
+	- Include total count
+	- Land: Price as a double
+	- Grain: Price, Demand, Harvest, and Rats
+
+Building
+	- Total count of each type of building
+
+RevenueStream
+	- Base: Total Revenue
+	- Tax: Include the tax Percentage
+
 City
 	- Name
-	- Land size
+	- Land
 	- Land price
 	- Grain count
 	- Grain demand
@@ -35,18 +50,3 @@ City
 	- Soldier Pay
 	- Treasury
 	- Is Bankrupt
-
-Treasury
-	- Total money
-	- Customs Duty %
-	- Customs Duty Revenue
-	- Income Tax %
-	- Income Tax Revenue
-	- Sales Tax %
-	- Sales Tax Revenue
-	- Marketplace Revenue
-	- Mill Revenue
-	
-	
-	
-	
